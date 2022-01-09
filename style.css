@@ -14,7 +14,7 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
-    background: url("./snake.png");
+    background: url("./img/snake.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center center;
