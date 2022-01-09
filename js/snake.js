@@ -1,7 +1,9 @@
 import { getKeyDirection } from "./keys-input.js";
 
-const SPEED = 1;
+const SPEED = 5;
 const SNAKE_BODY = [{x: 11, y: 11}];
+
+let newSegments = 0;
 
 function update() {
     //console.log('update snake');
@@ -18,7 +20,6 @@ function update() {
 
 function draw(arg) {
     //console.log('draw snake');
-    arg.innerHTML = '';
 
     SNAKE_BODY.forEach(segment => {
         const SNAKE_PART = document.createElement('div');
@@ -29,4 +30,17 @@ function draw(arg) {
     });
 }
 
-export { SPEED, update, draw };
+function expandSnake(amount) {
+    newSegments += amount;
+}
+
+function onSnake(position) {
+    return SNAKE_BODY.some(segment => {
+        return samePositions(segment, position);
+    });
+}
+
+function samePositions(...arg) {
+    return arg[0].x === arg[1].x && arg[0].y === arg[1].y;
+}
+export { SPEED, update, draw, expandSnake, onSnake };
